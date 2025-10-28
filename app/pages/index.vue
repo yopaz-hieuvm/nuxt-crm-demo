@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { useProducts } from '~/features/Products/composables/useProducts.composables';
+
+const {isLoading, products} = useProducts()
+</script>
 <template>
-  <h1>Hello</h1>
+  <div>
+    <v-data-table :items="products"></v-data-table>
+  </div>
 </template>

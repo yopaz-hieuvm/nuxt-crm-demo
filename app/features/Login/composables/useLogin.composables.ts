@@ -9,7 +9,6 @@ export const useLogin = () => {
   const login = async (payload: LoginRequest) => {
     try {
       isLoading.value = true;
-      console.log(payload);
       const res = await api<ResponseToken>("/auth/login", {
         method: "POST",
         body: payload,

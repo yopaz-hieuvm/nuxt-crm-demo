@@ -1,3 +1,11 @@
+<script setup lang="ts">
+const { clearTokens } = useAuthToken();
+
+const logout = () => {
+  clearTokens();
+  navigateTo({ name: "login" });
+};
+</script>
 <template>
   <VApp>
     <v-navigation-drawer elevation="0" app floating>
@@ -14,9 +22,9 @@
           :to="{ name: 'index' }"
         />
         <v-list-item
-          prepend-icon="mdi-account-group-outline"
-          title="Login"
-          :to="{ name: 'login' }"
+          prepend-icon="mdi mdi-logout"
+          title="Logout"
+          @click.prevent="logout"
         />
       </v-list>
     </v-navigation-drawer>

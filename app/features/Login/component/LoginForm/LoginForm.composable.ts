@@ -2,7 +2,7 @@ import type { LoginRequest } from "../../types";
 import * as yup from "yup";
 
 export const useLoginForm = () => {
-    const visible = ref(false)
+  const visible = ref(false);
   const loginSchema = yup
     .object()
     .shape<Record<keyof LoginRequest, yup.AnySchema>>({
@@ -19,10 +19,9 @@ export const useLoginForm = () => {
 
   const formId = "login-form";
 
-    return {
-      visible,
+  return {
+    visible,
     form,
-      formId,
-    
+    formId,
   };
 };

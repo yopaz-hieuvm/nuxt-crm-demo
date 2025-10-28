@@ -5,16 +5,11 @@ import type { LoginFormEmits, LoginFormProps } from "./LoginForm.types";
 import BaseInput from "~/component/BaseInput/BaseInput.vue";
 defineProps<LoginFormProps>();
 defineEmits<LoginFormEmits>();
-const { visible,form, formId } = useLoginForm();
+const { visible, form, formId } = useLoginForm();
 </script>
 <template>
-  <div>
-    <v-card
-      class="mx-auto my-auto pa-12 pb-8"
-      elevation="8"
-      max-width="448"
-      rounded="lg"
-    >
+  <div style="height: 100vh" class="d-flex align-center">
+    <v-card class="mx-auto pa-12 pb-8" elevation="8" width="448" rounded="lg">
       <v-card-title class="text-xl font-semibold">Đăng nhập</v-card-title>
       <v-card-text>
         <BaseForm :id="formId" :form @submit="$emit('submit:login', $event)">
