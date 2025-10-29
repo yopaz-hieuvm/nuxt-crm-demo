@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SettingsIcon, LogoutIcon, UserIcon } from "vue-tabler-icons";
-
+import Logo from "./Logo.vue";
 const { clearTokens } = useAuthToken();
 
 const logout = () => {
@@ -10,14 +10,23 @@ const logout = () => {
 </script>
 <template>
   <VApp>
-    <v-navigation-drawer elevation="0" app floating>
+    <v-navigation-drawer elevation="0" app floating theme="#5e35b1">
+      <div class="pa-5">
+        <Logo />
+      </div>
       <v-list nav color="#5e35b1" class="px-6">
         <v-list-item
           prepend-icon="mdi mdi-view-dashboard"
           title="John Leider"
         />
       </v-list>
-      <v-list density="comfortable" nav color="#5e35b1" class="px-6">
+      <v-list
+        density="comfortable"
+        nav
+        color="#5e35b1"
+        theme="#5e35b1"
+        class="px-6"
+      >
         <v-list-item
           prepend-icon="mdi-home-city"
           title="Home"
