@@ -8081,6 +8081,7 @@ __metadata:
     vite-tsconfig-paths: "npm:^5.1.4"
     vue: "npm:^3.5.22"
     vue-router: "npm:^4.6.3"
+    vue-tabler-icons: "npm:^2.21.0"
     vue-uuid: "npm:^3.0.0"
     vuetify-nuxt-module: "npm:0.18.8"
     yup: "npm:^1.7.1"
@@ -10757,7 +10758,7 @@ __metadata:
 
 "typescript@patch:typescript@npm%3A^5.9.3#optional!builtin<compat/typescript>":
   version: 5.9.3
-  resolution: "typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=b45daf"
+  resolution: "typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5adc0c"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
@@ -11518,6 +11519,13 @@ __metadata:
   peerDependencies:
     vue: ^3.5.0
   checksum: 10c0/4528f4fded4b45b07d4e096116e9b5fd602af463e735f7e5133b1a258ce325ebc894dd7bc962a937556615fd42d06b0fb290dfae90e96f237862b7f74baa22a0
+  languageName: node
+  linkType: hard
+
+"vue-tabler-icons@npm:^2.21.0":
+  version: 2.21.0
+  resolution: "vue-tabler-icons@npm:2.21.0"
+  checksum: 10c0/73d618b3d1ee672d2ce03098405b5be6d40fe8c565037e930310132acb8844c7361d56abffadb84050f5b46313de628e95f61194eef89f00925661efe03a34a6
   languageName: node
   linkType: hard
 

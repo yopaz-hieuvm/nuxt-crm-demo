@@ -1,9 +1,8 @@
-import { useStorage } from "@vueuse/core";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "~/const/token";
 
 export function useAuthToken() {
-  const accessToken = useStorage<string | null>(ACCESS_TOKEN, null);
-  const refreshToken = useStorage<string | null>(REFRESH_TOKEN, null);
+  const accessToken = useCookie<string | null>(ACCESS_TOKEN);
+  const refreshToken = useCookie<string | null>(REFRESH_TOKEN);
 
   function setTokens(a?: string | null, r?: string | null) {
     if (typeof a !== "undefined") accessToken.value = a;

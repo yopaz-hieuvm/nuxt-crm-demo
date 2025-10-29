@@ -35,6 +35,7 @@
     "sass": "^1.93.2",
     "typescript": "^5.9.3",
     "vite-tsconfig-paths": "^5.1.4",
+    "vue-tabler-icons": "^2.21.0",
     "vue-uuid": "^3.0.0"
   }
 }

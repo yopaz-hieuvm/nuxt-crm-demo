@@ -14,7 +14,7 @@ export const useLogin = () => {
         body: payload,
       });
       setTokens(res.access_token, res.refresh_token);
-      await navigateTo("/");
+      await navigateTo({ name: "index" });
     } catch (err) {
       console.log(err);
     } finally {
