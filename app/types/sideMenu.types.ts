@@ -6,7 +6,7 @@ export type Menu = {
   divider?: boolean;
   chip?: string;
   chipColor?: string;
-  chipVariant?: string;
+  chipVariant?: "flat" | "elevated" | "outlined" | "plain" | "text" | "tonal";
   chipIcon?: string;
   children?: Menu[];
   disabled?: boolean;

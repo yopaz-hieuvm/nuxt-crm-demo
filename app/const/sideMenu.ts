@@ -1,6 +1,6 @@
 import { CircleIcon, KeyIcon, DashboardIcon } from "vue-tabler-icons";
 import type { Menu } from "~/types/sideMenu.types";
-export const sidebarItem: Menu[] = [
+export const sideMenu: Menu[] = [
   { header: "Dashboard" },
   {
     title: "Default",

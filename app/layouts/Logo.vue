@@ -1,5 +1,5 @@
 <template>
-  <div class="logo">
+  <div class="ml-2">
     <svg
       width="92"
       height="32"

@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { SettingsIcon, LogoutIcon, UserIcon } from "vue-tabler-icons";
 import Logo from "./Logo.vue";
+import { sideMenu } from "~/const/sideMenu";
+import NavGroup from "./NavGroup.vue";
+import NavCollapse from "./NavCollapse.vue";
+import NavItem from "./NavItem.vue";
 const { clearTokens } = useAuthToken();
-
 const logout = () => {
   clearTokens();
   navigateTo({ name: "login" });
@@ -10,36 +13,31 @@ const logout = () => {
 </script>
 <template>
   <VApp>
-    <v-navigation-drawer elevation="0" app floating theme="#5e35b1">
+    <v-navigation-drawer elevation="0" app floating>
       <div class="pa-5">
         <Logo />
       </div>
-      <v-list nav color="#5e35b1" class="px-6">
-        <v-list-item
-          prepend-icon="mdi mdi-view-dashboard"
-          title="John Leider"
-        />
-      </v-list>
-      <v-list
-        density="comfortable"
-        nav
-        color="#5e35b1"
-        theme="#5e35b1"
-        class="px-6"
-      >
-        <v-list-item
-          prepend-icon="mdi-home-city"
-          title="Home"
-          :to="{ name: 'index' }"
-        />
-        <v-list-item
-          prepend-icon="mdi mdi-logout"
-          title="Logout"
-          @click.prevent="logout"
-        />
+      <v-list class="pa-4">
+        <!---Menu Loop -->
+        <template v-for="(item, i) in sideMenu" :key="i">
+          <!---Item Sub Header -->
+          <NavGroup v-if="item.header" :key="item.title" :item="item" />
+          <!---Item Divider -->
+          <v-divider v-else-if="item.divider" class="my-3" />
+          <!---If Has Child -->
+          <NavCollapse
+            v-else-if="item.children"
+            class="leftPadding"
+            :item="item"
+            :level="0"
+          />
+          <!---Single Item-->
+          <NavItem v-else :item="item" :level="0" class="leftPadding" />
+          <!---End Single Item-->
+        </template>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar elevation="0" height="84">
+    <v-app-bar elevation="0" height="80">
       <template #append>
         <v-menu :close-on-content-click="false">
           <template #activator="{ props }">
@@ -112,7 +110,7 @@ const logout = () => {
       </template>
     </v-app-bar>
     <v-main class="mx-4 ml-lg-1 mr-lg-4">
-      <v-container fluid class="rounded-xl bg-grey-lighten-4 page-wrapper">
+      <v-container fluid class="rounded-xl page-wrapper">
         <slot />
       </v-container>
       <v-container fluid class="pt-0">
