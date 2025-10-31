@@ -7,19 +7,21 @@ export const useLogin = () => {
   const isLoading = ref(false);
 
   const login = async (payload: LoginRequest) => {
-    try {
-      isLoading.value = true;
-      const res = await api<ResponseToken>("/auth/login", {
-        method: "POST",
-        body: payload,
+    isLoading.value = true;
+    await api<ResponseToken>("/auth/login", {
+      method: "POST",
+      body: payload,
+    })
+      .then((res) => {
+        setTokens(res.access_token, res.refresh_token);
+        navigateTo({ name: "index" });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        isLoading.value = false;
       });
-      setTokens(res.access_token, res.refresh_token);
-      await navigateTo({ name: "index" });
-    } catch (err) {
-      console.log(err);
-    } finally {
-      isLoading.value = false;
-    }
   };
 
   return { login, isLoading };

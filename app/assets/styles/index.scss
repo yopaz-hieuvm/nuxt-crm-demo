@@ -9,3 +9,40 @@
   margin: 0 20px 0 10px !important;
   background-color: #eef2f6 !important;
 }
+
+/*General Menu css*/
+.v-list-group__items .v-list-item,
+.v-list-item {
+  &:hover {
+    color: #5e35b1;
+  }
+}
+/*This is for the dropdown*/
+.v-list {
+  .sidebarchip .v-icon {
+    margin-inline-start: -3px;
+  }
+  .v-list-group {
+    .v-list-item:hover > .v-list-item__overlay,
+    .v-list-item--active > .v-list-item__overlay {
+      background-color: transparent;
+    }
+  }
+  > .v-list-group {
+    position: relative;
+    > .v-list-item--active,
+    > .v-list-item:hover {
+      background: #5e35b108;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      left: 21px;
+      top: 46px;
+      height: calc(100% - 46px);
+      width: 1px;
+      opacity: 1;
+      background: rgb(var(--v-theme-primary), 0.15);
+    }
+  }
+}

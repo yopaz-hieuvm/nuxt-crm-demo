@@ -6,32 +6,29 @@ defineProps<{ item: Menu; level: number }>();
 </script>
 
 <template>
-  <!---Single Item-->
   <v-list-item
     :to="{ name: item.to }"
-    rounded
-    class="mb-1"
-    color="secondary"
+    rounded="lg"
+    class="mb-1 mr-auto"
+    color="#5e35b1"
     :disabled="item.disabled"
-    :target="item.type === 'external' ? '_blank' : ''"
+    :style="{
+      paddingInlineStart: level > 0 ? '15px !important' : '',
+      marginLeft: level > 0 ? '30px !important' : '',
+    }"
   >
-    <!---If icon-->
     <template #prepend>
-      <Icon :item="item.icon" :level="level" />
+      <Icon :item="item.icon" :level="level" class="d-flex align-center" />
     </template>
-    <v-list-item-title>{{ item.title }}</v-list-item-title>
-    <!---If Caption-->
-    <v-list-item-subtitle
-      v-if="item.subCaption"
-      class="text-caption mt-n1 hide-menu"
-    >
+    <v-list-item-title class="d-flex align-center text-subtitle-2">{{
+      item.title
+    }}</v-list-item-title>
+    <v-list-item-subtitle v-if="item.subCaption" class="text-caption">
       {{ item.subCaption }}
     </v-list-item-subtitle>
-    <!---If any chip or label-->
     <template v-if="item.chip" #append>
       <v-chip
         :color="item.chipColor"
-        class="sidebarchip hide-menu"
         :size="item.chipIcon ? 'small' : 'default'"
         :variant="item.chipVariant"
         :prepend-icon="item.chipIcon"

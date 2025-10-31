@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { SettingsIcon, LogoutIcon, UserIcon } from "vue-tabler-icons";
-import Logo from "./Logo.vue";
+import Logo from "./component/Logo.vue";
 import { sideMenu } from "~/const/sideMenu";
-import NavGroup from "./NavGroup.vue";
-import NavCollapse from "./NavCollapse.vue";
-import NavItem from "./NavItem.vue";
+import NavGroup from "./component/NavGroup.vue";
+import NavCollapse from "./component/NavCollapse.vue";
+import NavItem from "./component/NavItem.vue";
 const { clearTokens } = useAuthToken();
 const logout = () => {
   clearTokens();
@@ -18,22 +18,11 @@ const logout = () => {
         <Logo />
       </div>
       <v-list class="pa-4">
-        <!---Menu Loop -->
         <template v-for="(item, i) in sideMenu" :key="i">
-          <!---Item Sub Header -->
           <NavGroup v-if="item.header" :key="item.title" :item="item" />
-          <!---Item Divider -->
           <v-divider v-else-if="item.divider" class="my-3" />
-          <!---If Has Child -->
-          <NavCollapse
-            v-else-if="item.children"
-            class="leftPadding"
-            :item="item"
-            :level="0"
-          />
-          <!---Single Item-->
-          <NavItem v-else :item="item" :level="0" class="leftPadding" />
-          <!---End Single Item-->
+          <NavCollapse v-else-if="item.children" :item="item" :level="0" />
+          <NavItem v-else :item="item" :level="0" />
         </template>
       </v-list>
     </v-navigation-drawer>

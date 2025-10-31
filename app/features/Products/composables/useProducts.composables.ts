@@ -6,17 +6,19 @@ export const useProducts = () => {
   const products = ref<Product[]>([]);
 
   const getProducts = async () => {
-    try {
-      isLoading.value = true;
-      const res = await api<Product[]>("products", {
-        method: "GET",
+    isLoading.value = true;
+    await api<Product[]>("products", {
+      method: "GET",
+    })
+      .then((res) => {
+        products.value = res;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        isLoading.value = false;
       });
-      products.value = res;
-    } catch (err) {
-      console.log(err);
-    } finally {
-      isLoading.value = false;
-    }
   };
 
   getProducts();

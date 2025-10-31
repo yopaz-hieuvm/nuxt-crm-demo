@@ -10,6 +10,5 @@ export type Menu = {
   chipIcon?: string;
   children?: Menu[];
   disabled?: boolean;
-  type?: string;
   subCaption?: string;
 };
