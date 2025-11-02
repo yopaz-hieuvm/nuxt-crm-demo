@@ -36,8 +36,8 @@ export const useApi = () => {
             method: options.method as HttpMethod,
             headers: h,
           });
-        } catch (error) {
-          console.log(error);
+        } catch (err) {
+          console.log(err);
           clearTokens();
           navigateTo("/login");
         }

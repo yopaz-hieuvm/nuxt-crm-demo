@@ -1,12 +1,22 @@
 <script setup lang="ts">
 import BasePageHeader from "~/component/BasePageHeader/BasePageHeader.vue";
+import DialogAction from "~/features/Users/components/DialogAction/DialogAction.vue";
 import { useUsers } from "~/features/Users/composables.ts/useUsers.composables";
 
-const { isLoading, users, headers, breadcrumbs, deleteUser } = useUsers();
+const { isLoading, users, headers, breadcrumbs, deleteUser, isShowDialog } =
+  useUsers();
 </script>
 <template>
   <div>
     <BasePageHeader title="Danh sách người dùng" :breadcrumbs />
+    <div class="d-flex justify-end mb-3 mx-3">
+      <v-btn
+        variant="tonal"
+        append-icon="mdi mdi-account-plus"
+        @click.prevent="isShowDialog = true"
+        >Thêm người dùng</v-btn
+      >
+    </div>
     <v-sheet border rounded="xl">
       <v-data-table
         :headers
@@ -45,5 +55,7 @@ const { isLoading, users, headers, breadcrumbs, deleteUser } = useUsers();
         </template>
       </v-data-table>
     </v-sheet>
+
+    <DialogAction v-model="isShowDialog" />
   </div>
 </template>

@@ -6,6 +6,8 @@ export const useUsers = () => {
   const { api } = useApi();
   const isLoading = ref(false);
   const users = ref<User[]>([]);
+  const toast = useToast();
+  const isShowDialog = ref(false);
 
   const getUsers = async () => {
     isLoading.value = true;
@@ -16,7 +18,7 @@ export const useUsers = () => {
         users.value = res;
       })
       .catch((err) => {
-        console.log(err);
+        toast.error({ title: err.status, message: err.message });
       })
       .finally(() => {
         isLoading.value = false;
@@ -32,7 +34,7 @@ export const useUsers = () => {
       body: request,
     })
       .catch((err) => {
-        console.log(err);
+        toast.error({ title: err.status, message: err.message });
       })
       .finally(() => {
         isLoading.value = false;
@@ -45,7 +47,7 @@ export const useUsers = () => {
       method: "DELETE",
     })
       .catch((err) => {
-        console.log(err);
+        toast.error({ title: err.status, message: err.message });
       })
       .finally(() => {
         isLoading.value = false;
@@ -84,5 +86,6 @@ export const useUsers = () => {
     breadcrumbs,
     createUser,
     deleteUser,
+    isShowDialog,
   };
 };
