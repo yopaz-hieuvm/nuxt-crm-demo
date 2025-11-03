@@ -3,7 +3,7 @@ import BasePageHeader from "~/component/BasePageHeader/BasePageHeader.vue";
 import DialogAction from "~/features/Users/components/DialogAction/DialogAction.vue";
 import { useUsers } from "~/features/Users/composables.ts/useUsers.composables";
 
-const { isLoading, users, headers, breadcrumbs, deleteUser, isShowDialog } =
+const { isLoading, users, headers, breadcrumbs, deleteUser, isShowDialog, createUser } =
   useUsers();
 </script>
 <template>
@@ -13,6 +13,7 @@ const { isLoading, users, headers, breadcrumbs, deleteUser, isShowDialog } =
       <v-btn
         variant="tonal"
         append-icon="mdi mdi-account-plus"
+        color="primary"
         @click.prevent="isShowDialog = true"
         >Thêm người dùng</v-btn
       >
@@ -56,6 +57,6 @@ const { isLoading, users, headers, breadcrumbs, deleteUser, isShowDialog } =
       </v-data-table>
     </v-sheet>
 
-    <DialogAction v-model="isShowDialog" />
+    <DialogAction v-model="isShowDialog" @submit="createUser" />
   </div>
 </template>

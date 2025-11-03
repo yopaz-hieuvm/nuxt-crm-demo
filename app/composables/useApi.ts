@@ -41,8 +41,6 @@ export const useApi = () => {
           clearTokens();
           navigateTo("/login");
         }
-      } else {
-        navigateTo("/login");
       }
     },
   });
