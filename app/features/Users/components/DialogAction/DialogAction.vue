@@ -23,7 +23,11 @@ const { form, formId } = useDialogAction();
         </v-card-item>
         <v-card-text>
           <BaseInput name="name" autocomplete="off" />
-          <BaseInput name="password" type="password" autocomplete="new-password" />
+          <BaseInput
+            name="password"
+            type="password"
+            autocomplete="new-password"
+          />
           <BaseInput name="email" />
           <BaseInput name="role" />
           <v-file-upload density="compact" />

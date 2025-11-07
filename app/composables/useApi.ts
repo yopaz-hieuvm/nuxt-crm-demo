@@ -25,7 +25,7 @@ export const useApi = () => {
           }
           const data = await core<ResponseToken>("/auth/refresh-token", {
             method: "POST",
-            body: { refresh_token: refreshToken.value },
+            body: { refreshToken: refreshToken.value },
           });
           setTokens(data.access_token, data.refresh_token);
           const h = new Headers(options.headers);

@@ -1,4 +1,3 @@
-import type { DataTableHeader } from "~/types/dataTableHeader";
 import type { CreatedUserRequest, User } from "../types";
 import type { Breadcrumb } from "~/types/breadcrumb.types";
 
@@ -46,6 +45,7 @@ export const useUsers = () => {
     await api<VoidFunction>(`users/${id}`, {
       method: "DELETE",
     })
+      .then(getUsers)
       .catch((err) => {
         toast.error({ title: err.status, message: err.message });
       })
@@ -53,19 +53,6 @@ export const useUsers = () => {
         isLoading.value = false;
       });
   };
-
-  const headers: DataTableHeader<User>[] = [
-    {
-      title: "Avatar",
-      key: "avatar",
-      width: "100px",
-      align: "center",
-    },
-    { title: "Name", key: "name" },
-    { title: "Role", key: "role" },
-    { title: "Email", key: "email" },
-    { title: "Action", key: "action" },
-  ];
 
   const breadcrumbs = ref<Breadcrumb[]>([
     {
@@ -82,7 +69,6 @@ export const useUsers = () => {
   return {
     isLoading,
     users,
-    headers,
     breadcrumbs,
     createUser,
     deleteUser,
