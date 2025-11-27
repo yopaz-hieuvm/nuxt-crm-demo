@@ -1,21 +1,11 @@
 <script setup lang="ts">
-import type { DataTableHeader } from "~/types/dataTableHeader";
 import type { UsersListEmits, UsersListProps } from "./UsersList.types";
-import type { User } from "../../types";
+
+import { useUsersList } from "./UsersList.composables";
+import BaseConfirmDelete from "~/component/BaseConfirmDelete/BaseConfirmDelete.vue";
 defineProps<UsersListProps>();
 defineEmits<UsersListEmits>();
-const headers: DataTableHeader<User>[] = [
-  {
-    title: "Avatar",
-    key: "avatar",
-    width: "100px",
-    align: "center",
-  },
-  { title: "Name", key: "name" },
-  { title: "Role", key: "role" },
-  { title: "Email", key: "email" },
-  { title: "Action", key: "action" },
-];
+const { headers } = useUsersList();
 </script>
 <template>
   <div>
@@ -40,6 +30,7 @@ const headers: DataTableHeader<User>[] = [
           </div>
         </template>
         <template #[`item.action`]="{ item }">
+          <div class="d-flex">
           <v-btn
             variant="outlined"
             class="text-subtitle-2 mr-3"
@@ -47,14 +38,12 @@ const headers: DataTableHeader<User>[] = [
             append-icon="mdi mdi-account-edit-outline"
             >Edit</v-btn
           >
-          <v-btn
+          <BaseConfirmDelete
             variant="outlined"
             class="text-subtitle-2"
             color="error"
-            append-icon="mdi mdi-delete-outline"
-            @click.prevent="$emit('delete:user', item.id)"
-            >Delete</v-btn
-          >
+            @delete:confirmed="$emit('delete:user', item.id)"
+          /></div>
         </template>
       </v-data-table>
     </v-sheet>
